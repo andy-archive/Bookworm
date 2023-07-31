@@ -5,10 +5,10 @@
 //  Created by Taekwon Lee on 2023/07/31.
 //
 
-import Foundation
+import UIKit
 
 struct Book {
     let title: String
-    let overview: String
     let rate: Double
+    let image: UIImage?
 }
