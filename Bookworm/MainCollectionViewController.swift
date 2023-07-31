@@ -23,16 +23,19 @@ class MainCollectionViewController: UICollectionViewController {
         setCollectionLayout()
     }
     
-    func setCollectionLayout() {
-        let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 10
-        let width = UIScreen.main.bounds.width - spacing * 3
+    @IBAction func searchButtonClicked(_ sender: UIBarButtonItem) {
+        let sb = UIStoryboard(name: "Main", bundle: nil)
         
-        layout.itemSize = CGSize(width: width / 2, height: width / 2)
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        collectionView.collectionViewLayout = layout
+        guard let vc = sb.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else {
+            print("ERROR")
+            return
+        }
+        
+        let nav = UINavigationController(rootViewController: vc)
+        
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -63,5 +66,19 @@ class MainCollectionViewController: UICollectionViewController {
         vc.navigationItem.title = row.title
         
         navigationController?.pushViewController(vc, animated: true)
+    }
+}
+
+extension MainCollectionViewController {
+    func setCollectionLayout() {
+        let layout = UICollectionViewFlowLayout()
+        let spacing: CGFloat = 10
+        let width = UIScreen.main.bounds.width - spacing * 3
+        
+        layout.itemSize = CGSize(width: width / 2, height: width / 2)
+        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.minimumLineSpacing = spacing
+        layout.minimumInteritemSpacing = spacing
+        collectionView.collectionViewLayout = layout
     }
 }
