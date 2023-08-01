@@ -17,7 +17,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     func configureCell(row: Book) {
         backView.layer.cornerRadius = 5
-        backView.backgroundColor = getRandomColor()
+        backView.backgroundColor = .systemGray4
         
         bookTitleLabel.text = row.title
         bookTitleLabel.backgroundColor = .clear
