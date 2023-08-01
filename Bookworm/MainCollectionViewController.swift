@@ -69,9 +69,8 @@ class MainCollectionViewController: UICollectionViewController {
             print("ERROR")
             return
         }
-        let row = book.list[indexPath.row]
         
-        vc.navigationItem.title = row.title
+        vc.bookIndex = book.list[indexPath.row]
         
         navigationController?.pushViewController(vc, animated: true)
     }
