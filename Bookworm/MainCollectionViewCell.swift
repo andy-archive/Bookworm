@@ -11,7 +11,7 @@ class MainCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var bookTitleLabel: UILabel!
-    @IBOutlet weak var reviewLabel: UILabel!
+    @IBOutlet weak var bookReviewLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     
@@ -20,11 +20,14 @@ class MainCollectionViewCell: UICollectionViewCell {
         backView.backgroundColor = .systemGray4
         
         bookTitleLabel.text = row.title
+        bookTitleLabel.font = .boldSystemFont(ofSize: 18)
         bookTitleLabel.backgroundColor = .clear
         bookTitleLabel.numberOfLines = 0
         
-        reviewLabel.text = String(row.rate)
-        reviewLabel.backgroundColor = .clear
+        bookReviewLabel.text = "★ \(String(row.rate))"
+        bookReviewLabel.font = UIFont.systemFont(ofSize: 12)
+        bookReviewLabel.textColor = .red
+        bookReviewLabel.backgroundColor = .clear
         
         bookImageView.image = row.image
         bookImageView.layer.cornerRadius = 5
@@ -35,6 +38,8 @@ class MainCollectionViewCell: UICollectionViewCell {
         } else {
             likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
         }
+        
+        likeButton.tintColor = .systemPink
     }
     
     func getRandomColor() -> UIColor{

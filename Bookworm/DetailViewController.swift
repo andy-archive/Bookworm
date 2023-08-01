@@ -37,7 +37,7 @@ extension DetailViewController {
         
         bookImageView.image = book.image
         
-        bookTitleLabel.font = UIFont.systemFont(ofSize: 20)
+        bookTitleLabel.font = UIFont.boldSystemFont(ofSize: 20)
         bookTitleLabel.text = book.title
         bookTitleLabel.textColor = .black
         
