@@ -8,7 +8,8 @@
 import UIKit
 
 struct Book {
-    let title: String
-    let rate: Double
-    let image: UIImage?
+    var title: String
+    var rate: Double
+    var image: UIImage?
+    var isFavorite: Bool
 }

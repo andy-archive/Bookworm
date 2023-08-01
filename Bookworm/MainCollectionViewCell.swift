@@ -13,6 +13,7 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookTitleLabel: UILabel!
     @IBOutlet weak var reviewLabel: UILabel!
     @IBOutlet weak var bookImageView: UIImageView!
+    @IBOutlet weak var likeButton: UIButton!
     
     func configureCell(row: Book) {
         backView.layer.cornerRadius = 5
@@ -28,6 +29,12 @@ class MainCollectionViewCell: UICollectionViewCell {
         bookImageView.image = row.image
         bookImageView.layer.cornerRadius = 5
         bookImageView.backgroundColor = .clear
+        
+        if row.isFavorite == true {
+            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+        } else {
+            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+        }
     }
     
     func getRandomColor() -> UIColor{

@@ -11,7 +11,11 @@ private let reuseIdentifier = "Cell"
 
 class MainCollectionViewController: UICollectionViewController {
     
-    let book = BookInfo()
+    var book = BookInfo() {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +55,10 @@ class MainCollectionViewController: UICollectionViewController {
         
         cell.configureCell(row: row)
         
+        cell.likeButton.tag = indexPath.row
+        
+        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        
         return cell
     }
     
@@ -80,5 +88,9 @@ extension MainCollectionViewController {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         collectionView.collectionViewLayout = layout
+    }
+    
+    @objc func likeButtonClicked(_ sender: UIButton) {
+        book.list[sender.tag].isFavorite.toggle()
     }
 }
