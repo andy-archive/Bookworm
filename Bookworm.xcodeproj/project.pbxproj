@@ -19,6 +19,9 @@
 		38B35B552A77A56D00E28690 /* Book.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B35B542A77A56D00E28690 /* Book.swift */; };
 		38B35B572A77A5AF00E28690 /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B35B562A77A5AF00E28690 /* BookInfo.swift */; };
 		38B35B592A77C6A100E28690 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B35B582A77C6A100E28690 /* SearchViewController.swift */; };
+		38BE70AA2A7A2DAC0040D0E9 /* CatalogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE70A92A7A2DAC0040D0E9 /* CatalogViewController.swift */; };
+		38BE70B12A7A3C340040D0E9 /* CatalogCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE70AF2A7A3C340040D0E9 /* CatalogCollectionViewCell.swift */; };
+		38BE70B22A7A3C340040D0E9 /* CatalogCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 38BE70B02A7A3C340040D0E9 /* CatalogCollectionViewCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +39,9 @@
 		38B35B542A77A56D00E28690 /* Book.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Book.swift; sourceTree = "<group>"; };
 		38B35B562A77A5AF00E28690 /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
 		38B35B582A77C6A100E28690 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		38BE70A92A7A2DAC0040D0E9 /* CatalogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogViewController.swift; sourceTree = "<group>"; };
+		38BE70AF2A7A3C340040D0E9 /* CatalogCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCollectionViewCell.swift; sourceTree = "<group>"; };
+		38BE70B02A7A3C340040D0E9 /* CatalogCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CatalogCollectionViewCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,12 +76,15 @@
 			children = (
 				38B35B3A2A779B7200E28690 /* AppDelegate.swift */,
 				38B35B3C2A779B7200E28690 /* SceneDelegate.swift */,
-				38B35B3E2A779B7200E28690 /* DetailViewController.swift */,
 				38B35B402A779B7200E28690 /* Main.storyboard */,
+				38B35B3E2A779B7200E28690 /* DetailViewController.swift */,
 				38B35B582A77C6A100E28690 /* SearchViewController.swift */,
+				38B35B4E2A779C3D00E28690 /* MainCollectionViewController.swift */,
 				38B35B502A779CF300E28690 /* MainCollectionViewCell.swift */,
 				38B35B512A779CF300E28690 /* MainCollectionViewCell.xib */,
-				38B35B4E2A779C3D00E28690 /* MainCollectionViewController.swift */,
+				38BE70A92A7A2DAC0040D0E9 /* CatalogViewController.swift */,
+				38BE70AF2A7A3C340040D0E9 /* CatalogCollectionViewCell.swift */,
+				38BE70B02A7A3C340040D0E9 /* CatalogCollectionViewCell.xib */,
 				38B35B542A77A56D00E28690 /* Book.swift */,
 				38B35B562A77A5AF00E28690 /* BookInfo.swift */,
 				38B35B432A779B7300E28690 /* Assets.xcassets */,
@@ -144,6 +153,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				38B35B472A779B7300E28690 /* LaunchScreen.storyboard in Resources */,
+				38BE70B22A7A3C340040D0E9 /* CatalogCollectionViewCell.xib in Resources */,
 				38B35B442A779B7300E28690 /* Assets.xcassets in Resources */,
 				38B35B422A779B7200E28690 /* Main.storyboard in Resources */,
 				38B35B532A779CF300E28690 /* MainCollectionViewCell.xib in Resources */,
@@ -159,10 +169,12 @@
 			files = (
 				38B35B3F2A779B7200E28690 /* DetailViewController.swift in Sources */,
 				38B35B4F2A779C3D00E28690 /* MainCollectionViewController.swift in Sources */,
+				38BE70B12A7A3C340040D0E9 /* CatalogCollectionViewCell.swift in Sources */,
 				38B35B592A77C6A100E28690 /* SearchViewController.swift in Sources */,
 				38B35B552A77A56D00E28690 /* Book.swift in Sources */,
 				38B35B522A779CF300E28690 /* MainCollectionViewCell.swift in Sources */,
 				38B35B572A77A5AF00E28690 /* BookInfo.swift in Sources */,
+				38BE70AA2A7A2DAC0040D0E9 /* CatalogViewController.swift in Sources */,
 				38B35B3B2A779B7200E28690 /* AppDelegate.swift in Sources */,
 				38B35B3D2A779B7200E28690 /* SceneDelegate.swift in Sources */,
 			);
