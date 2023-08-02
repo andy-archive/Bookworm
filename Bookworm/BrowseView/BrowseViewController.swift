@@ -7,7 +7,7 @@
 
 import UIKit
 
-class CatalogViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
     
     @IBOutlet weak var historyCollectionView: UICollectionView!
     
