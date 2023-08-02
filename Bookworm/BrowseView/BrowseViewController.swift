@@ -7,9 +7,10 @@
 
 import UIKit
 
-class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
+class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var historyCollectionView: UICollectionView!
+    @IBOutlet weak var popContentsTableView: UITableView!
     
     var book = BookInfo()
     
@@ -18,11 +19,17 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         historyCollectionView.delegate = self
         historyCollectionView.dataSource = self
+        popContentsTableView.delegate = self
+        popContentsTableView.dataSource = self
         
-        let nib = UINib(nibName: HistoryCollectionViewCell.identifier, bundle: nil)
-        historyCollectionView.register(nib, forCellWithReuseIdentifier: HistoryCollectionViewCell.identifier)
+        let historyNib = UINib(nibName: HistoryCollectionViewCell.identifier, bundle: nil)
+        let popContentsNib = UINib(nibName: PopContentsTableViewCell.identifier, bundle: nil)
+        
+        historyCollectionView.register(historyNib, forCellWithReuseIdentifier: HistoryCollectionViewCell.identifier)
+        popContentsTableView.register(popContentsNib, forCellReuseIdentifier: PopContentsTableViewCell.identifier)
         
         configureHistoryCollectionViewLayout()
+        configurePopContentsTableViewLayout()
     }
     
     func configureHistoryCollectionViewLayout() {
@@ -34,8 +41,12 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         historyCollectionView.collectionViewLayout = layout
     }
     
+    func configurePopContentsTableViewLayout() {
+        popContentsTableView.rowHeight = 120
+    }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return book.list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -48,6 +59,21 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         cell.configureCell(row: row)
         
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        book.list.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PopContentsTableViewCell.identifier, for: indexPath) as? PopContentsTableViewCell else {
+            print("ERROR")
+            return UITableViewCell()
+        }
+        let row = book.list[indexPath.row]
+        
+        cell.configureCell(row: row)
         
         return cell
     }

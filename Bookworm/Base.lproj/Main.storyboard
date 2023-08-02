@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="NHH-Yc-bAm">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -202,25 +203,56 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g14-Mi-W0W">
+                                <rect key="frame" x="0.0" y="341" width="393" height="477"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="hBR-jc-2X2">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hBR-jc-2X2" id="Xgj-pY-V3c">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 주 인기 작품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twm-Z0-Upf">
+                                <rect key="frame" x="20" y="293" width="353" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="xaS-a7-wLT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="K2H-3f-Htr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="g14-Mi-W0W" firstAttribute="top" secondItem="twm-Z0-Upf" secondAttribute="bottom" constant="24" id="8th-wy-Myo"/>
+                            <constraint firstItem="K2H-3f-Htr" firstAttribute="trailing" secondItem="twm-Z0-Upf" secondAttribute="trailing" constant="20" id="DmX-yZ-moa"/>
                             <constraint firstItem="kpa-5g-62D" firstAttribute="leading" secondItem="K2H-3f-Htr" secondAttribute="leading" constant="20" id="FAu-RR-DOK"/>
+                            <constraint firstItem="g14-Mi-W0W" firstAttribute="trailing" secondItem="K2H-3f-Htr" secondAttribute="trailing" id="LWh-9E-Vub"/>
                             <constraint firstItem="L3b-AF-hlp" firstAttribute="top" secondItem="kpa-5g-62D" secondAttribute="bottom" constant="20" id="WWT-ML-pLv"/>
+                            <constraint firstItem="K2H-3f-Htr" firstAttribute="bottom" secondItem="g14-Mi-W0W" secondAttribute="bottom" id="ZpQ-9p-Vzn"/>
+                            <constraint firstItem="g14-Mi-W0W" firstAttribute="leading" secondItem="K2H-3f-Htr" secondAttribute="leading" id="dZ2-VC-6nO"/>
                             <constraint firstItem="K2H-3f-Htr" firstAttribute="trailing" secondItem="L3b-AF-hlp" secondAttribute="trailing" id="dfX-0s-mOh"/>
+                            <constraint firstItem="twm-Z0-Upf" firstAttribute="leading" secondItem="K2H-3f-Htr" secondAttribute="leading" constant="20" id="fwa-xj-zZh"/>
                             <constraint firstItem="K2H-3f-Htr" firstAttribute="trailing" secondItem="kpa-5g-62D" secondAttribute="trailing" constant="20" id="h4J-Sq-66Z"/>
                             <constraint firstItem="L3b-AF-hlp" firstAttribute="leading" secondItem="K2H-3f-Htr" secondAttribute="leading" id="qC9-Pj-xad"/>
                             <constraint firstItem="kpa-5g-62D" firstAttribute="top" secondItem="K2H-3f-Htr" secondAttribute="top" constant="20" id="v3Q-nd-zRB"/>
+                            <constraint firstItem="twm-Z0-Upf" firstAttribute="top" secondItem="L3b-AF-hlp" secondAttribute="bottom" constant="20" id="zBd-nc-pCd"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="historyCollectionView" destination="L3b-AF-hlp" id="kC7-bp-g1s"/>
+                        <outlet property="popContentsTableView" destination="g14-Mi-W0W" id="hD9-69-IV8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WxI-Rw-tKi" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2850" y="704"/>
+            <point key="canvasLocation" x="2849.6183206106871" y="703.52112676056345"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="yBk-g5-7GH">
