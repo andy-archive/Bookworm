@@ -30,7 +30,7 @@ class DetailViewController: UIViewController {
         
         let xmarkImage = UIImage(systemName: "xmark")
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmarkImage, style: .plain, target: self, action: #selector(returnButtonClicked))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: xmarkImage, style: .plain, target: self, action: #selector(returnButtonClicked))
         
         configView(book: bookIndex)
     }
