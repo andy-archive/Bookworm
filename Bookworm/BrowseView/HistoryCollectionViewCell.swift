@@ -1,5 +1,5 @@
 //
-//  CatalogCollectionViewCell.swift
+//  HistoryCollectionViewCell.swift
 //  Bookworm
 //
 //  Created by Taekwon Lee on 2023/08/02.
@@ -7,9 +7,9 @@
 
 import UIKit
 
-class CatalogCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier = "CatalogCollectionViewCell"
+class HistoryCollectionViewCell: UICollectionViewCell {
+
+    static let identifier = "HistoryCollectionViewCell"
     
     @IBOutlet weak var bookImageView: UIImageView!
     

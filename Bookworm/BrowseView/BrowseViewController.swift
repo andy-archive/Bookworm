@@ -19,8 +19,8 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         historyCollectionView.delegate = self
         historyCollectionView.dataSource = self
         
-        let nib = UINib(nibName: CatalogCollectionViewCell.identifier, bundle: nil)
-        historyCollectionView.register(nib, forCellWithReuseIdentifier: CatalogCollectionViewCell.identifier)
+        let nib = UINib(nibName: HistoryCollectionViewCell.identifier, bundle: nil)
+        historyCollectionView.register(nib, forCellWithReuseIdentifier: HistoryCollectionViewCell.identifier)
         
         configureHistoryCollectionViewLayout()
     }
@@ -40,7 +40,7 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CatalogCollectionViewCell.identifier, for: indexPath) as? CatalogCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.identifier, for: indexPath) as? HistoryCollectionViewCell else {
             print("ERROR")
             return UICollectionViewCell()
         }
