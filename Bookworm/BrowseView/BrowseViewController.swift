@@ -12,7 +12,7 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
     @IBOutlet weak var historyCollectionView: UICollectionView!
     @IBOutlet weak var popContentsTableView: UITableView!
     
-    var book = BookInfo()
+    var bookInfo = BookInfo()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +37,6 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 100, height: 180)
         layout.sectionInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
-        
         historyCollectionView.collectionViewLayout = layout
     }
     
@@ -46,16 +45,16 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return book.list.count
+        return bookInfo.list.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.identifier, for: indexPath) as? HistoryCollectionViewCell else {
             print("ERROR")
             return UICollectionViewCell()
         }
-        let row = book.list[indexPath.row]
+        
+        let row = bookInfo.list[indexPath.row]
         
         cell.configureCell(row: row)
         
@@ -68,7 +67,7 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
             return
         }
         
-        vc.bookIndex = book.list[indexPath.row]
+        vc.bookIndex = bookInfo.list[indexPath.row]
         
         let nav = UINavigationController(rootViewController: vc)
         
@@ -78,7 +77,7 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        book.list.count
+        bookInfo.list.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -86,7 +85,7 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
             print("ERROR")
             return UITableViewCell()
         }
-        let row = book.list[indexPath.row]
+        let row = bookInfo.list[indexPath.row]
         
         cell.configureCell(row: row)
         
@@ -99,7 +98,7 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
             return
         }
         
-        vc.bookIndex = book.list[indexPath.row]
+        vc.bookIndex = bookInfo.list[indexPath.row]
         
         let nav = UINavigationController(rootViewController: vc)
         

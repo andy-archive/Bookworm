@@ -20,9 +20,9 @@ class MainCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let nib = UINib(nibName: "MainCollectionViewCell", bundle: nil)
+        let nib = UINib(nibName: MainCollectionViewCell.identifier, bundle: nil)
         
-        collectionView.register(nib, forCellWithReuseIdentifier: "MainCollectionViewCell")
+        collectionView.register(nib, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         
         setCollectionLayout()
     }
@@ -30,7 +30,7 @@ class MainCollectionViewController: UICollectionViewController {
     @IBAction func searchButtonClicked(_ sender: UIBarButtonItem) {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         
-        guard let vc = sb.instantiateViewController(withIdentifier: "SearchViewController") as? SearchViewController else {
+        guard let vc = sb.instantiateViewController(withIdentifier: SearchViewController.identifier) as? SearchViewController else {
             print("ERROR")
             return
         }
@@ -47,7 +47,7 @@ class MainCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MainCollectionViewCell", for: indexPath) as? MainCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {
             print("ERROR")
             return UICollectionViewCell()
         }
@@ -71,7 +71,6 @@ class MainCollectionViewController: UICollectionViewController {
         }
         
         vc.bookIndex = book.list[indexPath.row]
-        
         
         navigationController?.pushViewController(vc, animated: true)
     }

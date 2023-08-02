@@ -8,6 +8,8 @@
 import UIKit
 
 class SearchViewController: UIViewController {
+    
+    static let identifier = "SearchViewController"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -15,14 +17,11 @@ class SearchViewController: UIViewController {
         title = "검색 화면"
         
         let xmark = UIImage(systemName: "xmark")
-        
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain, target: self, action: #selector(closeButtonClicked))
-
-        navigationItem.leftBarButtonItem?.tintColor = .black
+        navigationItem.leftBarButtonItem?.tintColor = .blue
     }
     
-    @objc
-    func closeButtonClicked() {
+    @objc func closeButtonClicked() {
         dismiss(animated: true)
     }
 }

@@ -8,6 +8,8 @@
 import UIKit
 
 class MainCollectionViewCell: UICollectionViewCell {
+    
+    static let identifier = "MainCollectionViewCell"
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var bookTitleLabel: UILabel!
@@ -15,28 +17,33 @@ class MainCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var likeButton: UIButton!
     
-    func configureCell(row: Book) {
+    override func awakeFromNib() {
+        super.awakeFromNib()
         backView.layer.cornerRadius = 5
         backView.backgroundColor = .systemGray4
-        
-        bookTitleLabel.text = row.title
         bookTitleLabel.font = .boldSystemFont(ofSize: 18)
         bookTitleLabel.backgroundColor = .clear
         bookTitleLabel.numberOfLines = 0
-        
-        bookReviewLabel.text = "★ \(String(row.rate))"
         bookReviewLabel.font = UIFont.systemFont(ofSize: 12)
         bookReviewLabel.textColor = .red
         bookReviewLabel.backgroundColor = .clear
-        
-        bookImageView.image = row.image
         bookImageView.layer.cornerRadius = 5
         bookImageView.backgroundColor = .clear
+    }
+    
+    func configureCell(row: Book) {
+        
+        bookTitleLabel.text = row.title
+        bookReviewLabel.text = "★ \(String(row.rate))"
+        bookImageView.image = row.image
+
+        let heartFillImage = UIImage(systemName: "heart.fill")
+        let heartNotFillImage = UIImage(systemName: "heart")
         
         if row.isFavorite == true {
-            likeButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)
+            likeButton.setImage(heartFillImage, for: .normal)
         } else {
-            likeButton.setImage(UIImage(systemName: "heart"), for: .normal)
+            likeButton.setImage(heartNotFillImage, for: .normal)
         }
         
         likeButton.tintColor = .systemPink
