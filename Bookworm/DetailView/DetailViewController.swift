@@ -9,6 +9,8 @@ import UIKit
 
 class DetailViewController: UIViewController {
     
+    static let identifier = "DetailViewController"
+    
     var bookIndex: Book?
     
     @IBOutlet weak var topBackView: UIView!
@@ -25,6 +27,10 @@ class DetailViewController: UIViewController {
             print("ERROR")
             return
         }
+        
+        let xmarkImage = UIImage(systemName: "xmark")
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmarkImage, style: .plain, target: self, action: #selector(returnButtonClicked))
         
         configView(book: bookIndex)
     }
@@ -54,5 +60,9 @@ extension DetailViewController {
         bookSummaryLabel.textColor = .black
         bookSummaryLabel.textAlignment = .justified
         bookSummaryLabel.numberOfLines = 0
+    }
+    
+    @objc func returnButtonClicked() {
+        dismiss(animated: true)
     }
 }

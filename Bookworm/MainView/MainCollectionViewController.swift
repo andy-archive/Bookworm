@@ -72,6 +72,7 @@ class MainCollectionViewController: UICollectionViewController {
         
         vc.bookIndex = book.list[indexPath.row]
         
+        
         navigationController?.pushViewController(vc, animated: true)
     }
 }

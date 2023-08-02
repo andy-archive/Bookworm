@@ -62,6 +62,21 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         return cell
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {
+            print("ERROR")
+            return
+        }
+        
+        vc.bookIndex = book.list[indexPath.row]
+        
+        let nav = UINavigationController(rootViewController: vc)
+        
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         book.list.count
     }
@@ -76,6 +91,21 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         cell.configureCell(row: row)
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {
+            print("ERROR")
+            return
+        }
+        
+        vc.bookIndex = book.list[indexPath.row]
+        
+        let nav = UINavigationController(rootViewController: vc)
+        
+        nav.modalPresentationStyle = .fullScreen
+        
+        present(nav, animated: true)
     }
 
 }
