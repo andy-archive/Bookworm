@@ -78,8 +78,8 @@
 		38B35B392A779B7200E28690 /* Bookworm */ = {
 			isa = PBXGroup;
 			children = (
-				38D4317C2A7B9D35004CFC5A /* Models */,
-				38BE70D12A7A773D0040D0E9 /* Data */,
+				38D4317C2A7B9D35004CFC5A /* View */,
+				38BE70D12A7A773D0040D0E9 /* Model */,
 				38B35B3A2A779B7200E28690 /* AppDelegate.swift */,
 				38B35B3C2A779B7200E28690 /* SceneDelegate.swift */,
 				38B35B402A779B7200E28690 /* Main.storyboard */,
@@ -128,16 +128,16 @@
 			path = SearchView;
 			sourceTree = "<group>";
 		};
-		38BE70D12A7A773D0040D0E9 /* Data */ = {
+		38BE70D12A7A773D0040D0E9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				38B35B542A77A56D00E28690 /* Book.swift */,
 				38B35B562A77A5AF00E28690 /* BookInfo.swift */,
 			);
-			path = Data;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		38D4317C2A7B9D35004CFC5A /* Models */ = {
+		38D4317C2A7B9D35004CFC5A /* View */ = {
 			isa = PBXGroup;
 			children = (
 				38BE70CC2A7A77070040D0E9 /* MainView */,
@@ -145,7 +145,7 @@
 				38BE70CD2A7A77130040D0E9 /* BrowseView */,
 				38BE70CF2A7A77260040D0E9 /* SearchView */,
 			);
-			path = Models;
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

@@ -18,18 +18,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="SEARCH VIEW" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aoh-b3-TYV">
-                                <rect key="frame" x="37" y="396" width="319" height="60"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qL8-qx-0gM">
+                                <rect key="frame" x="20" y="411" width="353" height="30"/>
+                                <color key="backgroundColor" systemColor="systemGray5Color"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="uwn-fF-eUv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="B2b-pP-zxT"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="aoh-b3-TYV" firstAttribute="centerY" secondItem="dDl-oM-yWd" secondAttribute="centerY" id="Efe-h8-D6e"/>
-                            <constraint firstItem="aoh-b3-TYV" firstAttribute="centerX" secondItem="dDl-oM-yWd" secondAttribute="centerX" id="wH6-Xp-XcL"/>
+                            <constraint firstItem="qL8-qx-0gM" firstAttribute="leading" secondItem="B2b-pP-zxT" secondAttribute="leading" constant="20" id="06o-ct-LbE"/>
+                            <constraint firstItem="qL8-qx-0gM" firstAttribute="centerY" secondItem="dDl-oM-yWd" secondAttribute="centerY" id="JtQ-Z9-cOD"/>
+                            <constraint firstItem="B2b-pP-zxT" firstAttribute="trailing" secondItem="qL8-qx-0gM" secondAttribute="trailing" constant="20" id="b6M-rf-YFo"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -299,6 +303,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="GB9-Q8-qOr" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="zMX-id-s8m">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -319,6 +324,9 @@
         </systemColor>
         <systemColor name="systemBrownColor">
             <color red="0.63529411764705879" green="0.51764705882352946" blue="0.36862745098039218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray5Color">
+            <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemYellowColor">
             <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
