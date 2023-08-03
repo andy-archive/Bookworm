@@ -19,14 +19,18 @@ class MainCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         backView.layer.cornerRadius = 5
         backView.backgroundColor = .systemGray4
+        
         bookTitleLabel.font = .boldSystemFont(ofSize: 18)
         bookTitleLabel.backgroundColor = .clear
         bookTitleLabel.numberOfLines = 0
+        
         bookReviewLabel.font = UIFont.systemFont(ofSize: 12)
         bookReviewLabel.textColor = .red
         bookReviewLabel.backgroundColor = .clear
+        
         bookImageView.layer.cornerRadius = 5
         bookImageView.backgroundColor = .clear
     }

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
+class BrowseViewController: UIViewController {
     
     @IBOutlet weak var historyCollectionView: UICollectionView!
     @IBOutlet weak var popContentsTableView: UITableView!
@@ -17,19 +17,25 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        historyCollectionView.delegate = self
-        historyCollectionView.dataSource = self
-        popContentsTableView.delegate = self
-        popContentsTableView.dataSource = self
-        
-        let historyNib = UINib(nibName: HistoryCollectionViewCell.identifier, bundle: nil)
-        let popContentsNib = UINib(nibName: PopContentsTableViewCell.identifier, bundle: nil)
-        
-        historyCollectionView.register(historyNib, forCellWithReuseIdentifier: HistoryCollectionViewCell.identifier)
-        popContentsTableView.register(popContentsNib, forCellReuseIdentifier: PopContentsTableViewCell.identifier)
+        uploadHistoryCollectionView()
+        uploadPopContentsTableView()
         
         configureHistoryCollectionViewLayout()
         configurePopContentsTableViewLayout()
+    }
+}
+
+// MARK: HistoryCollectionView
+
+extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    
+    func uploadHistoryCollectionView() {
+        historyCollectionView.delegate = self
+        historyCollectionView.dataSource = self
+        
+        let historyNib = UINib(nibName: HistoryCollectionViewCell.identifier, bundle: nil)
+        
+        historyCollectionView.register(historyNib, forCellWithReuseIdentifier: HistoryCollectionViewCell.identifier)
     }
     
     func configureHistoryCollectionViewLayout() {
@@ -40,9 +46,6 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         historyCollectionView.collectionViewLayout = layout
     }
     
-    func configurePopContentsTableViewLayout() {
-        popContentsTableView.rowHeight = 120
-    }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return bookInfo.list.count
@@ -75,6 +78,25 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         present(nav, animated: true)
     }
+}
+
+// MARK: PopContentsTableView
+
+extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
+  
+    func uploadPopContentsTableView() {
+        popContentsTableView.delegate = self
+        popContentsTableView.dataSource = self
+
+        let popContentsNib = UINib(nibName: PopContentsTableViewCell.identifier, bundle: nil)
+        
+        popContentsTableView.register(popContentsNib, forCellReuseIdentifier: PopContentsTableViewCell.identifier)
+    }
+    
+
+    func configurePopContentsTableViewLayout() {
+        popContentsTableView.rowHeight = 120
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         bookInfo.list.count
@@ -106,5 +128,4 @@ class BrowseViewController: UIViewController, UICollectionViewDelegate, UICollec
         
         present(nav, animated: true)
     }
-
 }
