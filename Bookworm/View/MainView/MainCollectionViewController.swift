@@ -11,28 +11,42 @@ private let reuseIdentifier = "Cell"
 
 class MainCollectionViewController: UICollectionViewController {
     
-    var book = BookInfo() {
+    var bookInfo = BookInfo() {
         didSet {
             collectionView.reloadData()
         }
     }
     
     let searchBar = UISearchBar()
-    var searchList = BookInfo().list
+    var searchList = [Book]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchList = bookInfo.list
         
         let nib = UINib(nibName: MainCollectionViewCell.identifier, bundle: nil)
         
         collectionView.register(nib, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
         
-        uploadSearchBar()
+        configureSearchBar()
         setCollectionLayout()
     }
     
-    @IBAction func searchButtonClicked(_ sender: UIBarButtonItem) {
+    @objc func likeButtonClicked(_ sender: UIButton) {
         
+        let title = searchList[sender.tag].title
+        
+        for (index, book) in bookInfo.list.enumerated() {
+            if book.title == title {
+                bookInfo.list[index].isFavorite.toggle()
+            }
+        }
+        searchList[sender.tag].isFavorite.toggle()
+        collectionView.reloadData()
+    }
+    
+    @IBAction func searchButtonClicked(_ sender: UIBarButtonItem) {
         guard let vc = storyboard?.instantiateViewController(withIdentifier: SearchViewController.identifier) as? SearchViewController else {
             print("ERROR")
             return
@@ -79,45 +93,44 @@ class MainCollectionViewController: UICollectionViewController {
     }
 }
 
+// MARK: SearchBar
+
 extension MainCollectionViewController: UISearchBarDelegate {
-    func uploadSearchBar() {
+    func configureSearchBar() {
         searchBar.delegate = self
         searchBar.placeholder = "검색어를 입력하세요"
         searchBar.showsCancelButton = true
         navigationItem.titleView = searchBar
     }
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let data = searchBar.text else { return }
-        
+    func searchQuery(data: String) {
         searchList.removeAll()
         
-        for book in book.list {
+        for book in bookInfo.list {
             if book.title.contains(data) {
                 searchList.append(book)
             }
         }
+        
+        collectionView.reloadData()
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let data = searchBar.text else { return }
+        
+        searchQuery(data: data)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        searchList = BookInfo().list
+        searchList = bookInfo.list
         searchBar.text = ""
         collectionView.reloadData()
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        
         guard let data = searchBar.text else { return }
         
-        searchList.removeAll()
-        
-        for book in book.list {
-            if book.title.contains(data) {
-                searchList.append(book)
-            }
-        }
-        
-        collectionView.reloadData()
+        searchQuery(data: data)
     }
 }
 
@@ -132,10 +145,5 @@ extension MainCollectionViewController {
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         collectionView.collectionViewLayout = layout
-    }
-    
-    @objc func likeButtonClicked(_ sender: UIButton) {
-        book.list[sender.tag].isFavorite.toggle()
-        searchList[sender.tag].isFavorite.toggle()
     }
 }
