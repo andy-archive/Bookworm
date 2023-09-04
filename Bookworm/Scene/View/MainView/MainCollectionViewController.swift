@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 final class MainCollectionViewController: UICollectionViewController {
     
@@ -15,19 +16,30 @@ final class MainCollectionViewController: UICollectionViewController {
         }
     }
     private var searchList = [Book]()
-    private let searchBar = UISearchBar()
+    private var searchBar = UISearchBar() {
+        didSet {
+            searchBar.delegate = self
+            searchBar.placeholder = "검색어를 입력하세요"
+            searchBar.showsCancelButton = true
+            navigationItem.titleView = searchBar
+        }
+    }
+    
+    private var tasks: Results<KakaoBookRealm>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        searchList = bookInfo.list
+        setBookRealm()
+        configureCollectionViewCell()
+        collectionView.collectionViewLayout = .setCollectionViewLayout(numberOfItem: 2, sectionSpacing: 4, itemSpacing: 8)
         
-        let nib = UINib(nibName: MainCollectionViewCell.reuseIdentifier, bundle: nil)
-        
-        collectionView.register(nib, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
-        
-        configureSearchBar()
-        setCollectionLayout()
+        //searchList = bookInfo.list
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        collectionView.reloadData()
     }
     
     @objc
@@ -45,66 +57,55 @@ final class MainCollectionViewController: UICollectionViewController {
     }
     
     @IBAction func searchButtonClicked(_ sender: UIBarButtonItem) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: SearchViewController.identifier) as? SearchViewController else {
-            print("ERROR")
-            return
-        }
-        
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: SearchViewController.reuseIdentifier) as? SearchViewController else { return }
         let nav = UINavigationController(rootViewController: vc)
-        
         nav.modalPresentationStyle = .fullScreen
-        
         present(nav, animated: true)
     }
     
+    //MARK: UICollectionView
+    
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return searchList.count
+        //return searchList.count
+        return tasks.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.reuseIdentifier, for: indexPath) as? MainCollectionViewCell else {
-            print("ERROR")
-            return UICollectionViewCell()
-        }
-        let row = searchList[indexPath.row]
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookListCollectionViewCell.reuseIdentifier, for: indexPath) as? BookListCollectionViewCell else { return UICollectionViewCell() }
         
-        cell.configureCell(row: row)
+        let row = tasks[indexPath.row]
+        guard let thumbnail = row.thumbnail else { return UICollectionViewCell() }
+        guard let url = URL(string: thumbnail) else { return UICollectionViewCell() }
         
-        cell.likeButton.tag = indexPath.row
-        cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
+        cell.titleLabel.text = row.title
+        cell.bookImage.loadImage(url: url)
+        
+        //let row = searchList[indexPath.row]
+        //cell.configureCell(row: row)
+        //cell.likeButton.tag = indexPath.row
+        //cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         
         return cell
     }
     
-    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else {
-            print("ERROR")
-            return
-        }
-        
-        vc.bookIndex = searchList[indexPath.row]
-        
-        navigationController?.pushViewController(vc, animated: true)
-    }
+//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else { return }
+//        vc.bookIndex = searchList[indexPath.row]
+//        navigationController?.pushViewController(vc, animated: true)
+//    }
+    
 }
 
-// MARK: SearchBar
+// MARK: UISearchBar
 
 extension MainCollectionViewController: UISearchBarDelegate {
-    private func configureSearchBar() {
-        searchBar.delegate = self
-        searchBar.placeholder = "검색어를 입력하세요"
-        searchBar.showsCancelButton = true
-        navigationItem.titleView = searchBar
-    }
     
-    private func searchQuery(data: String) {
+    private func searchQuery(query: String) {
         searchList.removeAll()
         
         for book in bookInfo.list {
-            if book.title.contains(data) {
+            if book.title.contains(query) {
                 searchList.append(book)
             }
         }
@@ -112,9 +113,8 @@ extension MainCollectionViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let data = searchBar.text else { return }
-        
-        searchQuery(data: data)
+        guard let text = searchBar.text else { return }
+        searchQuery(query: text)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
@@ -124,22 +124,28 @@ extension MainCollectionViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let data = searchBar.text else { return }
+        guard let text = searchBar.text else { return }
         
-        searchQuery(data: data)
+        searchQuery(query: text)
     }
 }
 
+// MARK: UICollectionView Register & Layout
+
 extension MainCollectionViewController {
-    func setCollectionLayout() {
-        let layout = UICollectionViewFlowLayout()
-        let spacing: CGFloat = 10
-        let width = UIScreen.main.bounds.width - spacing * 3
-        
-        layout.itemSize = CGSize(width: width / 2, height: width / 2)
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
-        layout.minimumLineSpacing = spacing
-        layout.minimumInteritemSpacing = spacing
-        collectionView.collectionViewLayout = layout
+    
+    private func configureCollectionViewCell() {
+        collectionView.register(BookListCollectionViewCell.self, forCellWithReuseIdentifier: BookListCollectionViewCell.reuseIdentifier)
+        //let nib = UINib(nibName: MainCollectionViewCell.reuseIdentifier, bundle: nil)
+        //collectionView.register(nib, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
+    }
+}
+
+// MARK: setBookRealm
+
+extension MainCollectionViewController {
+    private func setBookRealm() {
+        let realm = try! Realm()
+        tasks = realm.objects(KakaoBookRealm.self)
     }
 }

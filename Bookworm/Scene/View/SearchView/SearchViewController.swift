@@ -9,12 +9,16 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 import Kingfisher
+import RealmSwift
 
 final class SearchViewController: UIViewController {
     
-    @IBOutlet private weak var bookTableView: UITableView!
-    
-    static let identifier = "SearchViewController"
+    @IBOutlet private weak var bookTableView: UITableView! {
+        didSet {
+            bookTableView.delegate = self
+            bookTableView.dataSource = self
+        }
+    }
     
     var bookList = [KakaoBook]()
 
@@ -22,8 +26,8 @@ final class SearchViewController: UIViewController {
         super.viewDidLoad()
 
         title = "카카오 책 검색"
+        bookTableView.rowHeight = 100
         
-        configureBookTableView()
         configureCloseButton()
     }
     
@@ -42,17 +46,14 @@ final class SearchViewController: UIViewController {
                 
                 let json = JSON(value)
                 let statusCode = response.response?.statusCode ?? 500
-                print("JSON: \(json)")
-                print("STAUS CODE: \(statusCode)")
                 
                 if statusCode == 200 {
                     for item in json["documents"].arrayValue {
-    //                    print(item)
                         
                         let title = item["title"].stringValue
                         let author = item["authors"][0].stringValue
                         let publisher = item["publisher"].stringValue
-                        let price = item["price"].intValue
+                        let price = item["price"].stringValue
                         let summary = item["contents"].stringValue
                         let thumbnail = item["thumbnail"].stringValue
                         let url = item["url"].stringValue
@@ -106,12 +107,6 @@ extension SearchViewController: UISearchBarDelegate {
 
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
-    private func configureBookTableView() {
-        bookTableView.delegate = self
-        bookTableView.dataSource = self
-        bookTableView.rowHeight = 100
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return bookList.count
     }
@@ -131,5 +126,19 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let row = bookList[indexPath.row]
+        
+        let realm = try! Realm()
+        let task = KakaoBookRealm(title: row.title, authors: row.authors, publisher: row.publisher, price: row.price, thumbnail: row.thumbnail, url: row.url)
+        
+        try! realm.write {
+            realm.add(task)
+//            print("Realm Add Success")
+        }
+        
+        dismiss(animated: true)
+    }
     
 }

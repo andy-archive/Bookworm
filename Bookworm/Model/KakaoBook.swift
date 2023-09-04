@@ -11,7 +11,7 @@ struct KakaoBook {
     let title: String
     let authors: String
     let publisher: String
-    let price: Int
+    let price: String
     let summary: String
     let thumbnail: String
     let url: String

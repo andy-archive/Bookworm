@@ -23,6 +23,14 @@
 		38BE70AA2A7A2DAC0040D0E9 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE70A92A7A2DAC0040D0E9 /* BrowseViewController.swift */; };
 		38C9522C2AA59FB1002A50BA /* KakaoBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9522B2AA59FB1002A50BA /* KakaoBook.swift */; };
 		38C952322AA5A078002A50BA /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952312AA5A078002A50BA /* ReusableProtocol.swift */; };
+		38C952362AA5A582002A50BA /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = 38C952352AA5A582002A50BA /* Realm */; };
+		38C952382AA5A582002A50BA /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 38C952372AA5A582002A50BA /* RealmSwift */; };
+		38C9523B2AA5A89F002A50BA /* KakaoBookRealm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9523A2AA5A89F002A50BA /* KakaoBookRealm.swift */; };
+		38C952412AA5B76A002A50BA /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952402AA5B76A002A50BA /* BaseCollectionViewCell.swift */; };
+		38C952432AA5B7AA002A50BA /* BookListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952422AA5B7AA002A50BA /* BookListCollectionViewCell.swift */; };
+		38C952462AA5BE7E002A50BA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 38C952452AA5BE7E002A50BA /* SnapKit */; };
+		38C952482AA5CBF9002A50BA /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952472AA5CBF9002A50BA /* UIImageView+.swift */; };
+		38C9524A2AA5EADC002A50BA /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952492AA5EADC002A50BA /* UICollectionViewLayout+.swift */; };
 		38FBCF3E2A849F8300045027 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF3D2A849F8300045027 /* SwiftyJSON */; };
 		38FBCF412A849F8F00045027 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF402A849F8F00045027 /* Alamofire */; };
 		38FBCF442A849FAE00045027 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF432A849FAE00045027 /* Kingfisher */; };
@@ -53,6 +61,11 @@
 		38BE70A92A7A2DAC0040D0E9 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
 		38C9522B2AA59FB1002A50BA /* KakaoBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBook.swift; sourceTree = "<group>"; };
 		38C952312AA5A078002A50BA /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
+		38C9523A2AA5A89F002A50BA /* KakaoBookRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBookRealm.swift; sourceTree = "<group>"; };
+		38C952402AA5B76A002A50BA /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		38C952422AA5B7AA002A50BA /* BookListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCollectionViewCell.swift; sourceTree = "<group>"; };
+		38C952472AA5CBF9002A50BA /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
+		38C952492AA5EADC002A50BA /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
 		38FBCF452A84A0B600045027 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		38FBCF472A84A0F300045027 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		A197F1062A7A8F9C00B69D1C /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -68,6 +81,9 @@
 			files = (
 				38FBCF442A849FAE00045027 /* Kingfisher in Frameworks */,
 				38FBCF3E2A849F8300045027 /* SwiftyJSON in Frameworks */,
+				38C952362AA5A582002A50BA /* Realm in Frameworks */,
+				38C952462AA5BE7E002A50BA /* SnapKit in Frameworks */,
+				38C952382AA5A582002A50BA /* RealmSwift in Frameworks */,
 				38FBCF412A849F8F00045027 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,6 +118,7 @@
 				38B35B482A779B7300E28690 /* Info.plist */,
 				38BE70D12A7A773D0040D0E9 /* Model */,
 				38C952332AA5A18A002A50BA /* Network */,
+				38C952392AA5A615002A50BA /* Realm */,
 				38C952262AA59F0B002A50BA /* Scene */,
 			);
 			path = Bookworm;
@@ -111,8 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				38B35B4E2A779C3D00E28690 /* MainCollectionViewController.swift */,
-				38B35B502A779CF300E28690 /* MainCollectionViewCell.swift */,
-				38B35B512A779CF300E28690 /* MainCollectionViewCell.xib */,
+				38C952422AA5B7AA002A50BA /* BookListCollectionViewCell.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -168,8 +184,9 @@
 		38C952272AA59F13002A50BA /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				38B35B402A779B7200E28690 /* Main.storyboard */,
 				38B35B452A779B7300E28690 /* LaunchScreen.storyboard */,
+				38B35B402A779B7200E28690 /* Main.storyboard */,
+				38C9524B2AA5EC4B002A50BA /* MainCollectionViewCell */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -186,6 +203,8 @@
 		38C9522D2AA59FF5002A50BA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				38C952472AA5CBF9002A50BA /* UIImageView+.swift */,
+				38C952492AA5EADC002A50BA /* UICollectionViewLayout+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -194,6 +213,7 @@
 			isa = PBXGroup;
 			children = (
 				38C952312AA5A078002A50BA /* ReusableProtocol.swift */,
+				38C952402AA5B76A002A50BA /* BaseCollectionViewCell.swift */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -204,6 +224,23 @@
 				38FBCF472A84A0F300045027 /* APIKey.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		38C952392AA5A615002A50BA /* Realm */ = {
+			isa = PBXGroup;
+			children = (
+				38C9523A2AA5A89F002A50BA /* KakaoBookRealm.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		38C9524B2AA5EC4B002A50BA /* MainCollectionViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				38B35B502A779CF300E28690 /* MainCollectionViewCell.swift */,
+				38B35B512A779CF300E28690 /* MainCollectionViewCell.xib */,
+			);
+			path = MainCollectionViewCell;
 			sourceTree = "<group>";
 		};
 		38D4317C2A7B9D35004CFC5A /* View */ = {
@@ -237,6 +274,9 @@
 				38FBCF3D2A849F8300045027 /* SwiftyJSON */,
 				38FBCF402A849F8F00045027 /* Alamofire */,
 				38FBCF432A849FAE00045027 /* Kingfisher */,
+				38C952352AA5A582002A50BA /* Realm */,
+				38C952372AA5A582002A50BA /* RealmSwift */,
+				38C952452AA5BE7E002A50BA /* SnapKit */,
 			);
 			productName = Bookworm;
 			productReference = 38B35B372A779B7200E28690 /* Bookworm.app */;
@@ -270,6 +310,8 @@
 				38FBCF3C2A849F8300045027 /* XCRemoteSwiftPackageReference "SwiftyJSON" */,
 				38FBCF3F2A849F8F00045027 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				38FBCF422A849FAE00045027 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				38C952342AA5A582002A50BA /* XCRemoteSwiftPackageReference "realm-swift" */,
+				38C952442AA5BE7E002A50BA /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 38B35B382A779B7200E28690 /* Products */;
 			projectDirPath = "";
@@ -304,11 +346,15 @@
 			files = (
 				38B35B3F2A779B7200E28690 /* DetailViewController.swift in Sources */,
 				38B35B4F2A779C3D00E28690 /* MainCollectionViewController.swift in Sources */,
+				38C9523B2AA5A89F002A50BA /* KakaoBookRealm.swift in Sources */,
 				38C952322AA5A078002A50BA /* ReusableProtocol.swift in Sources */,
 				A197F1082A7A8F9C00B69D1C /* HistoryCollectionViewCell.swift in Sources */,
 				38B35B592A77C6A100E28690 /* SearchViewController.swift in Sources */,
 				38B35B552A77A56D00E28690 /* Book.swift in Sources */,
+				38C952482AA5CBF9002A50BA /* UIImageView+.swift in Sources */,
 				38B35B522A779CF300E28690 /* MainCollectionViewCell.swift in Sources */,
+				38C952412AA5B76A002A50BA /* BaseCollectionViewCell.swift in Sources */,
+				38C9524A2AA5EADC002A50BA /* UICollectionViewLayout+.swift in Sources */,
 				38B35B572A77A5AF00E28690 /* BookInfo.swift in Sources */,
 				38BE70AA2A7A2DAC0040D0E9 /* BrowseViewController.swift in Sources */,
 				38C9522C2AA59FB1002A50BA /* KakaoBook.swift in Sources */,
@@ -316,6 +362,7 @@
 				38B35B3B2A779B7200E28690 /* AppDelegate.swift in Sources */,
 				38B35B3D2A779B7200E28690 /* SceneDelegate.swift in Sources */,
 				38FBCF482A84A0F300045027 /* APIKey.swift in Sources */,
+				38C952432AA5B7AA002A50BA /* BookListCollectionViewCell.swift in Sources */,
 				A197F10C2A7A93A200B69D1C /* PopContentsTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,6 +591,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		38C952342AA5A582002A50BA /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		38C952442AA5BE7E002A50BA /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		38FBCF3C2A849F8300045027 /* XCRemoteSwiftPackageReference "SwiftyJSON" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SwiftyJSON/SwiftyJSON";
@@ -571,6 +634,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		38C952352AA5A582002A50BA /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 38C952342AA5A582002A50BA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		38C952372AA5A582002A50BA /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 38C952342AA5A582002A50BA /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+		38C952452AA5BE7E002A50BA /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 38C952442AA5BE7E002A50BA /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
 		38FBCF3D2A849F8300045027 /* SwiftyJSON */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 38FBCF3C2A849F8300045027 /* XCRemoteSwiftPackageReference "SwiftyJSON" */;
