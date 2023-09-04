@@ -7,9 +7,7 @@
 
 import UIKit
 
-class PopContentsTableViewCell: UITableViewCell {
-    
-    static let identifier = "PopContentsTableViewCell"
+final class PopContentsTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!

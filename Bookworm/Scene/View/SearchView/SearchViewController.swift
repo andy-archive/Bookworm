@@ -10,23 +10,9 @@ import SwiftyJSON
 import Alamofire
 import Kingfisher
 
-struct KakaoBook {
-    let title: String
-    let authors: String
-    let publisher: String
-    let price: Int
-    let summary: String
-    let thumbnail: String
-    let url: String
+final class SearchViewController: UIViewController {
     
-    var contents: String {
-        return "\(publisher)\n정가: \(price)원"
-    }
-}
-
-class SearchViewController: UIViewController {
-    
-    @IBOutlet weak var bookTableView: UITableView!
+    @IBOutlet private weak var bookTableView: UITableView!
     
     static let identifier = "SearchViewController"
     
@@ -41,7 +27,7 @@ class SearchViewController: UIViewController {
         configureCloseButton()
     }
     
-    func callRequest(query: String) {
+    private func callRequest(query: String) {
         let text = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let url = "https://dapi.kakao.com/v3/search/book?query=\(text)"
         let header: HTTPHeaders = ["Authorization": "\(APIKey.kakaoAPI)"]
@@ -93,16 +79,19 @@ class SearchViewController: UIViewController {
         }
     }
     
-    func configureCloseButton() {
+    private func configureCloseButton() {
         let xmark = UIImage(systemName: "xmark")
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: xmark, style: .plain, target: self, action: #selector(closeButtonClicked))
         navigationItem.leftBarButtonItem?.tintColor = .blue
     }
     
-    @objc func closeButtonClicked() {
+    @objc
+    func closeButtonClicked() {
         dismiss(animated: true)
     }
 }
+
+//MARK: UISearchBar
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -113,9 +102,11 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+//MARK: UITableView
+
 extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
     
-    func configureBookTableView() {
+    private func configureBookTableView() {
         bookTableView.delegate = self
         bookTableView.dataSource = self
         bookTableView.rowHeight = 100
@@ -129,12 +120,12 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let row = bookList[indexPath.row]
         
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.identifier) as? SearchTableViewCell else { return UITableViewCell() }
-        guard let url = URL(string: row.thumbnail) else { return UITableViewCell() }
-        
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SearchTableViewCell.reuseIdentifier) as? SearchTableViewCell else { return UITableViewCell() }
         cell.bookTitleLabel.text = row.title
         cell.bookAuthorLabel.text = row.authors
         cell.bookContentsLabel.text = row.contents
+        
+        guard let url = URL(string: row.thumbnail) else { return UITableViewCell() }
         cell.bookImageView.kf.setImage(with: url)
         
         return cell

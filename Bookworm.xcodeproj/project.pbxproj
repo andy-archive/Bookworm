@@ -21,6 +21,8 @@
 		38B35B572A77A5AF00E28690 /* BookInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B35B562A77A5AF00E28690 /* BookInfo.swift */; };
 		38B35B592A77C6A100E28690 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38B35B582A77C6A100E28690 /* SearchViewController.swift */; };
 		38BE70AA2A7A2DAC0040D0E9 /* BrowseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38BE70A92A7A2DAC0040D0E9 /* BrowseViewController.swift */; };
+		38C9522C2AA59FB1002A50BA /* KakaoBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C9522B2AA59FB1002A50BA /* KakaoBook.swift */; };
+		38C952322AA5A078002A50BA /* ReusableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952312AA5A078002A50BA /* ReusableProtocol.swift */; };
 		38FBCF3E2A849F8300045027 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF3D2A849F8300045027 /* SwiftyJSON */; };
 		38FBCF412A849F8F00045027 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF402A849F8F00045027 /* Alamofire */; };
 		38FBCF442A849FAE00045027 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF432A849FAE00045027 /* Kingfisher */; };
@@ -49,6 +51,8 @@
 		38B35B562A77A5AF00E28690 /* BookInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookInfo.swift; sourceTree = "<group>"; };
 		38B35B582A77C6A100E28690 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		38BE70A92A7A2DAC0040D0E9 /* BrowseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseViewController.swift; sourceTree = "<group>"; };
+		38C9522B2AA59FB1002A50BA /* KakaoBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBook.swift; sourceTree = "<group>"; };
+		38C952312AA5A078002A50BA /* ReusableProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReusableProtocol.swift; sourceTree = "<group>"; };
 		38FBCF452A84A0B600045027 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		38FBCF472A84A0F300045027 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		A197F1062A7A8F9C00B69D1C /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -90,16 +94,15 @@
 		38B35B392A779B7200E28690 /* Bookworm */ = {
 			isa = PBXGroup;
 			children = (
-				38D4317C2A7B9D35004CFC5A /* View */,
-				38BE70D12A7A773D0040D0E9 /* Model */,
-				38B35B3A2A779B7200E28690 /* AppDelegate.swift */,
-				38B35B3C2A779B7200E28690 /* SceneDelegate.swift */,
-				38B35B402A779B7200E28690 /* Main.storyboard */,
-				38B35B432A779B7300E28690 /* Assets.xcassets */,
-				38B35B452A779B7300E28690 /* LaunchScreen.storyboard */,
-				38B35B482A779B7300E28690 /* Info.plist */,
 				38FBCF452A84A0B600045027 /* .gitignore */,
-				38FBCF472A84A0F300045027 /* APIKey.swift */,
+				38C9522A2AA59F31002A50BA /* Application */,
+				38B35B432A779B7300E28690 /* Assets.xcassets */,
+				38C9522F2AA5A068002A50BA /* Base */,
+				38C9522D2AA59FF5002A50BA /* Extension */,
+				38B35B482A779B7300E28690 /* Info.plist */,
+				38BE70D12A7A773D0040D0E9 /* Model */,
+				38C952332AA5A18A002A50BA /* Network */,
+				38C952262AA59F0B002A50BA /* Scene */,
 			);
 			path = Bookworm;
 			sourceTree = "<group>";
@@ -148,16 +151,67 @@
 			children = (
 				38B35B542A77A56D00E28690 /* Book.swift */,
 				38B35B562A77A5AF00E28690 /* BookInfo.swift */,
+				38C9522B2AA59FB1002A50BA /* KakaoBook.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		38C952262AA59F0B002A50BA /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				38C952272AA59F13002A50BA /* Storyboard */,
+				38D4317C2A7B9D35004CFC5A /* View */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		38C952272AA59F13002A50BA /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				38B35B402A779B7200E28690 /* Main.storyboard */,
+				38B35B452A779B7300E28690 /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		38C9522A2AA59F31002A50BA /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				38B35B3A2A779B7200E28690 /* AppDelegate.swift */,
+				38B35B3C2A779B7200E28690 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		38C9522D2AA59FF5002A50BA /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		38C9522F2AA5A068002A50BA /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				38C952312AA5A078002A50BA /* ReusableProtocol.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		38C952332AA5A18A002A50BA /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				38FBCF472A84A0F300045027 /* APIKey.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		38D4317C2A7B9D35004CFC5A /* View */ = {
 			isa = PBXGroup;
 			children = (
-				38BE70CC2A7A77070040D0E9 /* MainView */,
-				38BE70CE2A7A77210040D0E9 /* DetailView */,
 				38BE70CD2A7A77130040D0E9 /* BrowseView */,
+				38BE70CE2A7A77210040D0E9 /* DetailView */,
+				38BE70CC2A7A77070040D0E9 /* MainView */,
 				38BE70CF2A7A77260040D0E9 /* SearchView */,
 			);
 			path = View;
@@ -250,12 +304,14 @@
 			files = (
 				38B35B3F2A779B7200E28690 /* DetailViewController.swift in Sources */,
 				38B35B4F2A779C3D00E28690 /* MainCollectionViewController.swift in Sources */,
+				38C952322AA5A078002A50BA /* ReusableProtocol.swift in Sources */,
 				A197F1082A7A8F9C00B69D1C /* HistoryCollectionViewCell.swift in Sources */,
 				38B35B592A77C6A100E28690 /* SearchViewController.swift in Sources */,
 				38B35B552A77A56D00E28690 /* Book.swift in Sources */,
 				38B35B522A779CF300E28690 /* MainCollectionViewCell.swift in Sources */,
 				38B35B572A77A5AF00E28690 /* BookInfo.swift in Sources */,
 				38BE70AA2A7A2DAC0040D0E9 /* BrowseViewController.swift in Sources */,
+				38C9522C2AA59FB1002A50BA /* KakaoBook.swift in Sources */,
 				3872B2FC2A84AD4600AC78E0 /* SearchTableViewCell.swift in Sources */,
 				38B35B3B2A779B7200E28690 /* AppDelegate.swift in Sources */,
 				38B35B3D2A779B7200E28690 /* SceneDelegate.swift in Sources */,

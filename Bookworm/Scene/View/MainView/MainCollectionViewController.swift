@@ -7,33 +7,31 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
-
-class MainCollectionViewController: UICollectionViewController {
+final class MainCollectionViewController: UICollectionViewController {
     
-    var bookInfo = BookInfo() {
+    private var bookInfo = BookInfo() {
         didSet {
             collectionView.reloadData()
         }
     }
-    
-    let searchBar = UISearchBar()
-    var searchList = [Book]()
+    private var searchList = [Book]()
+    private let searchBar = UISearchBar()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         searchList = bookInfo.list
         
-        let nib = UINib(nibName: MainCollectionViewCell.identifier, bundle: nil)
+        let nib = UINib(nibName: MainCollectionViewCell.reuseIdentifier, bundle: nil)
         
-        collectionView.register(nib, forCellWithReuseIdentifier: MainCollectionViewCell.identifier)
+        collectionView.register(nib, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
         
         configureSearchBar()
         setCollectionLayout()
     }
     
-    @objc func likeButtonClicked(_ sender: UIButton) {
+    @objc
+    func likeButtonClicked(_ sender: UIButton) {
         
         let title = searchList[sender.tag].title
         
@@ -65,7 +63,7 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.identifier, for: indexPath) as? MainCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainCollectionViewCell.reuseIdentifier, for: indexPath) as? MainCollectionViewCell else {
             print("ERROR")
             return UICollectionViewCell()
         }
@@ -74,7 +72,6 @@ class MainCollectionViewController: UICollectionViewController {
         cell.configureCell(row: row)
         
         cell.likeButton.tag = indexPath.row
-
         cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
         
         return cell
@@ -82,7 +79,7 @@ class MainCollectionViewController: UICollectionViewController {
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: "DetailViewController") as? DetailViewController else {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else {
             print("ERROR")
             return
         }
@@ -96,14 +93,14 @@ class MainCollectionViewController: UICollectionViewController {
 // MARK: SearchBar
 
 extension MainCollectionViewController: UISearchBarDelegate {
-    func configureSearchBar() {
+    private func configureSearchBar() {
         searchBar.delegate = self
         searchBar.placeholder = "검색어를 입력하세요"
         searchBar.showsCancelButton = true
         navigationItem.titleView = searchBar
     }
     
-    func searchQuery(data: String) {
+    private func searchQuery(data: String) {
         searchList.removeAll()
         
         for book in bookInfo.list {
@@ -111,7 +108,6 @@ extension MainCollectionViewController: UISearchBarDelegate {
                 searchList.append(book)
             }
         }
-        
         collectionView.reloadData()
     }
     

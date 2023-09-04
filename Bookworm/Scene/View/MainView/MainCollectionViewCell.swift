@@ -7,9 +7,7 @@
 
 import UIKit
 
-class MainCollectionViewCell: UICollectionViewCell {
-    
-    static let identifier = "MainCollectionViewCell"
+final class MainCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var backView: UIView!
     @IBOutlet weak var bookTitleLabel: UILabel!

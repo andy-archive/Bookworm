@@ -7,9 +7,7 @@
 
 import UIKit
 
-class SearchTableViewCell: UITableViewCell {
-    
-    static let identifier = "SearchTableViewCell"
+final class SearchTableViewCell: UITableViewCell {
     
     @IBOutlet weak var bookImageView: UIImageView!
     @IBOutlet weak var bookTitleLabel: UILabel!

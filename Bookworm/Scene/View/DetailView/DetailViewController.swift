@@ -7,9 +7,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
-    
-    static let identifier = "DetailViewController"
+final class DetailViewController: UIViewController {
     
     var bookIndex: Book?
     
@@ -37,7 +35,7 @@ class DetailViewController: UIViewController {
 }
 
 extension DetailViewController {
-    func configView(book: Book) {
+    private func configView(book: Book) {
         topBackView.backgroundColor = .black
         topBackView.layer.opacity = 0.7
         
@@ -62,7 +60,8 @@ extension DetailViewController {
         bookSummaryLabel.numberOfLines = 0
     }
     
-    @objc func returnButtonClicked() {
+    @objc
+    func returnButtonClicked() {
         dismiss(animated: true)
     }
 }

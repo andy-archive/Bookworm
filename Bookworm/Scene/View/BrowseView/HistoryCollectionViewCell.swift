@@ -7,10 +7,8 @@
 
 import UIKit
 
-class HistoryCollectionViewCell: UICollectionViewCell {
+final class HistoryCollectionViewCell: UICollectionViewCell {
 
-    static let identifier = "HistoryCollectionViewCell"
-    
     @IBOutlet weak var bookImageView: UIImageView!
     
     func configureCell(row: Book) {

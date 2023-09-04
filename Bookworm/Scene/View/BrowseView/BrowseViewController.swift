@@ -7,7 +7,7 @@
 
 import UIKit
 
-class BrowseViewController: UIViewController {
+final class BrowseViewController: UIViewController {
     
     @IBOutlet weak var historyCollectionView: UICollectionView!
     @IBOutlet weak var popContentsTableView: UITableView!
@@ -29,16 +29,16 @@ class BrowseViewController: UIViewController {
 
 extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
-    func uploadHistoryCollectionView() {
+    private func uploadHistoryCollectionView() {
         historyCollectionView.delegate = self
         historyCollectionView.dataSource = self
         
-        let historyNib = UINib(nibName: HistoryCollectionViewCell.identifier, bundle: nil)
+        let historyNib = UINib(nibName: HistoryCollectionViewCell.reuseIdentifier, bundle: nil)
         
-        historyCollectionView.register(historyNib, forCellWithReuseIdentifier: HistoryCollectionViewCell.identifier)
+        historyCollectionView.register(historyNib, forCellWithReuseIdentifier: HistoryCollectionViewCell.reuseIdentifier)
     }
     
-    func configureHistoryCollectionViewLayout() {
+    private func configureHistoryCollectionViewLayout() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
         layout.itemSize = CGSize(width: 100, height: 180)
@@ -52,7 +52,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.identifier, for: indexPath) as? HistoryCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HistoryCollectionViewCell.reuseIdentifier, for: indexPath) as? HistoryCollectionViewCell else {
             print("ERROR")
             return UICollectionViewCell()
         }
@@ -65,7 +65,7 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else {
             print("ERROR")
             return
         }
@@ -84,17 +84,17 @@ extension BrowseViewController: UICollectionViewDelegate, UICollectionViewDataSo
 
 extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
   
-    func uploadPopContentsTableView() {
+    private func uploadPopContentsTableView() {
         popContentsTableView.delegate = self
         popContentsTableView.dataSource = self
 
-        let popContentsNib = UINib(nibName: PopContentsTableViewCell.identifier, bundle: nil)
+        let popContentsNib = UINib(nibName: PopContentsTableViewCell.reuseIdentifier, bundle: nil)
         
-        popContentsTableView.register(popContentsNib, forCellReuseIdentifier: PopContentsTableViewCell.identifier)
+        popContentsTableView.register(popContentsNib, forCellReuseIdentifier: PopContentsTableViewCell.reuseIdentifier)
     }
     
 
-    func configurePopContentsTableViewLayout() {
+    private func configurePopContentsTableViewLayout() {
         popContentsTableView.rowHeight = 120
     }
     
@@ -103,7 +103,7 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: PopContentsTableViewCell.identifier, for: indexPath) as? PopContentsTableViewCell else {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PopContentsTableViewCell.reuseIdentifier, for: indexPath) as? PopContentsTableViewCell else {
             print("ERROR")
             return UITableViewCell()
         }
@@ -115,7 +115,7 @@ extension BrowseViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.identifier) as? DetailViewController else {
+        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else {
             print("ERROR")
             return
         }
