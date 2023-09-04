@@ -192,7 +192,7 @@
         <!--앤디의 책장-->
         <scene sceneID="dxq-5j-sJC">
             <objects>
-                <collectionViewController id="Hl6-Zj-VsL" customClass="MainCollectionViewController" customModule="Bookworm" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="MainCollectionViewController" id="Hl6-Zj-VsL" customClass="MainCollectionViewController" customModule="Bookworm" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="zrb-T3-34O">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -236,7 +236,7 @@
         <!--Browse View Controller-->
         <scene sceneID="K85-PJ-ib7">
             <objects>
-                <viewController storyboardIdentifier="CatalogViewController" id="NHH-Yc-bAm" customClass="BrowseViewController" customModule="Bookworm" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BrowseViewController" id="NHH-Yc-bAm" customClass="BrowseViewController" customModule="Bookworm" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="4Qe-gd-5sV">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
