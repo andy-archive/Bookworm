@@ -24,7 +24,6 @@ final class MainCollectionViewController: UICollectionViewController {
             navigationItem.titleView = searchBar
         }
     }
-    
     private let realm = try! Realm()
     private var tasks: Results<KakaoBookRealm>!
     
@@ -84,6 +83,17 @@ final class MainCollectionViewController: UICollectionViewController {
         cell.bookImage.loadImage(url: url)
         
         return cell
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(#function)
+        print(indexPath)
+        let vc = DetailContentsViewController()
+        vc.data = tasks[indexPath.row]
+        navigationController?.pushViewController(vc, animated: true)
+    }
+    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        print(#function)
     }
 }
 
