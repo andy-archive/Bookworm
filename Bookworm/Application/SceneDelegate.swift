@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScene)
         
         let sb = UIStoryboard(name: "Main", bundle: nil)
-        let firstVC = sb.instantiateViewController(withIdentifier: MainCollectionViewController.reuseIdentifier)
+        let firstVC = BookListViewController()
         let secondVC = sb.instantiateViewController(withIdentifier: BrowseViewController.reuseIdentifier)
         let firstNav = UINavigationController(rootViewController: firstVC)
         let secondNav = UINavigationController(rootViewController: secondVC)

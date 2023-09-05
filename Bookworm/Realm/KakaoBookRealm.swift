@@ -20,8 +20,9 @@ final class KakaoBookRealm: Object {
     @Persisted var thumbnail: String?
     @Persisted var url: String?
     @Persisted var isFavorite: Bool
+    @Persisted var userMemoText: String?
     
-    convenience init(_id: String = UUID().uuidString, title: String, authors: String, publisher: String, price: String, summary: String? = nil, thumbnail: String? = nil, url: String? = nil) {
+    convenience init(_id: String = UUID().uuidString, title: String, authors: String, publisher: String, price: String, summary: String? = nil, thumbnail: String? = nil, url: String? = nil, userMemoText: String? = nil) {
         self.init()
         
         self._id = _id
@@ -33,5 +34,6 @@ final class KakaoBookRealm: Object {
         self.thumbnail = thumbnail
         self.url = url
         self.isFavorite = false
+        self.userMemoText = ""
     }
 }

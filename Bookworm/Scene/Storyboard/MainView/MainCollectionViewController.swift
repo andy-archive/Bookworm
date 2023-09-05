@@ -30,8 +30,8 @@ final class MainCollectionViewController: UICollectionViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setBookRealm()
         configureCollectionViewCell()
+        setBookRealm()
         
         guard let fileURL = realm.configuration.fileURL else { return }
         print(fileURL)
@@ -66,7 +66,6 @@ final class MainCollectionViewController: UICollectionViewController {
     //MARK: UICollectionView
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        //return searchList.count
         return tasks.count
     }
     
@@ -86,14 +85,10 @@ final class MainCollectionViewController: UICollectionViewController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        print(#function)
-        print(indexPath)
+        tabBarController?.tabBar.isHidden.toggle()
         let vc = DetailContentsViewController()
         vc.data = tasks[indexPath.row]
         navigationController?.pushViewController(vc, animated: true)
-    }
-    override func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        print(#function)
     }
 }
 
@@ -139,6 +134,7 @@ extension MainCollectionViewController {
         collectionView.register(BookListCollectionViewCell.self, forCellWithReuseIdentifier: BookListCollectionViewCell.reuseIdentifier)
                 
         collectionView.collectionViewLayout = .setCollectionViewLayout(numberOfItem: 2, sectionSpacing: 4, itemSpacing: 8)
+        
 
     }
 }

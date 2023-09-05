@@ -138,7 +138,8 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
             price: row.price,
             summary: row.summary,
             thumbnail: row.thumbnail,
-            url: row.url
+            url: row.url,
+            userMemoText: ""
         )
         
         do {

@@ -242,7 +242,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="최근 본 작품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kpa-5g-62D">
-                                <rect key="frame" x="20" y="123" width="353" height="24"/>
+                                <rect key="frame" x="20" y="103" width="353" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="0Pq-K0-1r3"/>
                                 </constraints>
@@ -251,7 +251,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="L3b-AF-hlp">
-                                <rect key="frame" x="0.0" y="167" width="393" height="150"/>
+                                <rect key="frame" x="0.0" y="147" width="393" height="150"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="150" id="eC1-z2-nHa"/>
@@ -265,11 +265,11 @@
                                 <cells/>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="g14-Mi-W0W">
-                                <rect key="frame" x="0.0" y="385" width="393" height="384"/>
+                                <rect key="frame" x="0.0" y="365" width="393" height="404"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이번 주 인기 작품" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="twm-Z0-Upf">
-                                <rect key="frame" x="20" y="337" width="353" height="24"/>
+                                <rect key="frame" x="20" y="317" width="353" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="xaS-a7-wLT"/>
                                 </constraints>
@@ -281,6 +281,7 @@
                         <viewLayoutGuide key="safeArea" id="K2H-3f-Htr"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="kpa-5g-62D" firstAttribute="top" secondItem="K2H-3f-Htr" secondAttribute="top" id="6Bc-vX-ukr"/>
                             <constraint firstItem="g14-Mi-W0W" firstAttribute="top" secondItem="twm-Z0-Upf" secondAttribute="bottom" constant="24" id="8th-wy-Myo"/>
                             <constraint firstItem="K2H-3f-Htr" firstAttribute="trailing" secondItem="twm-Z0-Upf" secondAttribute="trailing" constant="20" id="DmX-yZ-moa"/>
                             <constraint firstItem="kpa-5g-62D" firstAttribute="leading" secondItem="K2H-3f-Htr" secondAttribute="leading" constant="20" id="FAu-RR-DOK"/>
@@ -292,7 +293,6 @@
                             <constraint firstItem="twm-Z0-Upf" firstAttribute="leading" secondItem="K2H-3f-Htr" secondAttribute="leading" constant="20" id="fwa-xj-zZh"/>
                             <constraint firstItem="K2H-3f-Htr" firstAttribute="trailing" secondItem="kpa-5g-62D" secondAttribute="trailing" constant="20" id="h4J-Sq-66Z"/>
                             <constraint firstItem="L3b-AF-hlp" firstAttribute="leading" secondItem="K2H-3f-Htr" secondAttribute="leading" id="qC9-Pj-xad"/>
-                            <constraint firstItem="kpa-5g-62D" firstAttribute="top" secondItem="K2H-3f-Htr" secondAttribute="top" constant="20" id="v3Q-nd-zRB"/>
                             <constraint firstItem="twm-Z0-Upf" firstAttribute="top" secondItem="L3b-AF-hlp" secondAttribute="bottom" constant="20" id="zBd-nc-pCd"/>
                         </constraints>
                     </view>

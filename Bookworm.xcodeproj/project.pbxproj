@@ -35,6 +35,7 @@
 		38DBD9B82AA7198A00111A5C /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBD9B72AA7198A00111A5C /* FileManager+Extension.swift */; };
 		38DBD9BB2AA740AF00111A5C /* DetailContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBD9BA2AA740AF00111A5C /* DetailContentsViewController.swift */; };
 		38DBD9BD2AA740E100111A5C /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBD9BC2AA740E100111A5C /* BaseViewController.swift */; };
+		38DBD9BF2AA7866E00111A5C /* BookListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBD9BE2AA7866E00111A5C /* BookListViewController.swift */; };
 		38FBCF3E2A849F8300045027 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF3D2A849F8300045027 /* SwiftyJSON */; };
 		38FBCF412A849F8F00045027 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF402A849F8F00045027 /* Alamofire */; };
 		38FBCF442A849FAE00045027 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF432A849FAE00045027 /* Kingfisher */; };
@@ -74,6 +75,7 @@
 		38DBD9B72AA7198A00111A5C /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		38DBD9BA2AA740AF00111A5C /* DetailContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailContentsViewController.swift; sourceTree = "<group>"; };
 		38DBD9BC2AA740E100111A5C /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		38DBD9BE2AA7866E00111A5C /* BookListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListViewController.swift; sourceTree = "<group>"; };
 		38FBCF452A84A0B600045027 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		38FBCF472A84A0F300045027 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		A197F1062A7A8F9C00B69D1C /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -136,7 +138,6 @@
 			isa = PBXGroup;
 			children = (
 				38B35B4E2A779C3D00E28690 /* MainCollectionViewController.swift */,
-				38C952422AA5B7AA002A50BA /* BookListCollectionViewCell.swift */,
 			);
 			path = MainView;
 			sourceTree = "<group>";
@@ -197,6 +198,7 @@
 				38B35B452A779B7300E28690 /* LaunchScreen.storyboard */,
 				38B35B402A779B7200E28690 /* Main.storyboard */,
 				38C9524B2AA5EC4B002A50BA /* MainCollectionViewCell */,
+				38BE70CC2A7A77070040D0E9 /* MainView */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -259,8 +261,8 @@
 		38D4317C2A7B9D35004CFC5A /* View */ = {
 			isa = PBXGroup;
 			children = (
+				38DBD9C02AA78BBC00111A5C /* BookListView */,
 				38DBD9B92AA7408700111A5C /* DetailContentsView */,
-				38BE70CC2A7A77070040D0E9 /* MainView */,
 				38BE70CF2A7A77260040D0E9 /* SearchView */,
 			);
 			path = View;
@@ -272,6 +274,15 @@
 				38DBD9BA2AA740AF00111A5C /* DetailContentsViewController.swift */,
 			);
 			path = DetailContentsView;
+			sourceTree = "<group>";
+		};
+		38DBD9C02AA78BBC00111A5C /* BookListView */ = {
+			isa = PBXGroup;
+			children = (
+				38C952422AA5B7AA002A50BA /* BookListCollectionViewCell.swift */,
+				38DBD9BE2AA7866E00111A5C /* BookListViewController.swift */,
+			);
+			path = BookListView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -378,6 +389,7 @@
 				38C952412AA5B76A002A50BA /* BaseCollectionViewCell.swift in Sources */,
 				38C9524A2AA5EADC002A50BA /* UICollectionViewLayout+Extension.swift in Sources */,
 				38DBD9B82AA7198A00111A5C /* FileManager+Extension.swift in Sources */,
+				38DBD9BF2AA7866E00111A5C /* BookListViewController.swift in Sources */,
 				38B35B572A77A5AF00E28690 /* BookInfo.swift in Sources */,
 				38BE70AA2A7A2DAC0040D0E9 /* BrowseViewController.swift in Sources */,
 				38C9522C2AA59FB1002A50BA /* KakaoBook.swift in Sources */,
