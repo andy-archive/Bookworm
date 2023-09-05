@@ -48,11 +48,13 @@ final class BookListCollectionViewCell: BaseCollectionViewCell {
         backView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
         }
+        
         titleLabel.snp.makeConstraints { make in
             make.top.equalTo(backView.snp.top).offset(spacing)
             make.leading.equalTo(backView.snp.leading).offset(spacing)
             make.trailing.lessThanOrEqualTo(backView.snp.trailing).offset(-spacing)
         }
+        
         bookImage.snp.makeConstraints { make in
             make.bottom.equalTo(backView.snp.bottom).offset(-spacing)
             make.trailing.equalTo(backView.snp.trailing).offset(-spacing)

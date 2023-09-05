@@ -29,8 +29,10 @@
 		38C952412AA5B76A002A50BA /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952402AA5B76A002A50BA /* BaseCollectionViewCell.swift */; };
 		38C952432AA5B7AA002A50BA /* BookListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952422AA5B7AA002A50BA /* BookListCollectionViewCell.swift */; };
 		38C952462AA5BE7E002A50BA /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 38C952452AA5BE7E002A50BA /* SnapKit */; };
-		38C952482AA5CBF9002A50BA /* UIImageView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952472AA5CBF9002A50BA /* UIImageView+.swift */; };
-		38C9524A2AA5EADC002A50BA /* UICollectionViewLayout+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952492AA5EADC002A50BA /* UICollectionViewLayout+.swift */; };
+		38C952482AA5CBF9002A50BA /* UIImageView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952472AA5CBF9002A50BA /* UIImageView+Extension.swift */; };
+		38C9524A2AA5EADC002A50BA /* UICollectionViewLayout+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38C952492AA5EADC002A50BA /* UICollectionViewLayout+Extension.swift */; };
+		38DBD9B62AA7194700111A5C /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBD9B52AA7194700111A5C /* UIViewController+Extension.swift */; };
+		38DBD9B82AA7198A00111A5C /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 38DBD9B72AA7198A00111A5C /* FileManager+Extension.swift */; };
 		38FBCF3E2A849F8300045027 /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF3D2A849F8300045027 /* SwiftyJSON */; };
 		38FBCF412A849F8F00045027 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF402A849F8F00045027 /* Alamofire */; };
 		38FBCF442A849FAE00045027 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 38FBCF432A849FAE00045027 /* Kingfisher */; };
@@ -64,8 +66,10 @@
 		38C9523A2AA5A89F002A50BA /* KakaoBookRealm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KakaoBookRealm.swift; sourceTree = "<group>"; };
 		38C952402AA5B76A002A50BA /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		38C952422AA5B7AA002A50BA /* BookListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookListCollectionViewCell.swift; sourceTree = "<group>"; };
-		38C952472AA5CBF9002A50BA /* UIImageView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+.swift"; sourceTree = "<group>"; };
-		38C952492AA5EADC002A50BA /* UICollectionViewLayout+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+.swift"; sourceTree = "<group>"; };
+		38C952472AA5CBF9002A50BA /* UIImageView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extension.swift"; sourceTree = "<group>"; };
+		38C952492AA5EADC002A50BA /* UICollectionViewLayout+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewLayout+Extension.swift"; sourceTree = "<group>"; };
+		38DBD9B52AA7194700111A5C /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		38DBD9B72AA7198A00111A5C /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		38FBCF452A84A0B600045027 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		38FBCF472A84A0F300045027 /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		A197F1062A7A8F9C00B69D1C /* HistoryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -203,8 +207,10 @@
 		38C9522D2AA59FF5002A50BA /* Extension */ = {
 			isa = PBXGroup;
 			children = (
-				38C952472AA5CBF9002A50BA /* UIImageView+.swift */,
-				38C952492AA5EADC002A50BA /* UICollectionViewLayout+.swift */,
+				38C952472AA5CBF9002A50BA /* UIImageView+Extension.swift */,
+				38C952492AA5EADC002A50BA /* UICollectionViewLayout+Extension.swift */,
+				38DBD9B52AA7194700111A5C /* UIViewController+Extension.swift */,
+				38DBD9B72AA7198A00111A5C /* FileManager+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -351,10 +357,11 @@
 				A197F1082A7A8F9C00B69D1C /* HistoryCollectionViewCell.swift in Sources */,
 				38B35B592A77C6A100E28690 /* SearchViewController.swift in Sources */,
 				38B35B552A77A56D00E28690 /* Book.swift in Sources */,
-				38C952482AA5CBF9002A50BA /* UIImageView+.swift in Sources */,
+				38C952482AA5CBF9002A50BA /* UIImageView+Extension.swift in Sources */,
 				38B35B522A779CF300E28690 /* MainCollectionViewCell.swift in Sources */,
 				38C952412AA5B76A002A50BA /* BaseCollectionViewCell.swift in Sources */,
-				38C9524A2AA5EADC002A50BA /* UICollectionViewLayout+.swift in Sources */,
+				38C9524A2AA5EADC002A50BA /* UICollectionViewLayout+Extension.swift in Sources */,
+				38DBD9B82AA7198A00111A5C /* FileManager+Extension.swift in Sources */,
 				38B35B572A77A5AF00E28690 /* BookInfo.swift in Sources */,
 				38BE70AA2A7A2DAC0040D0E9 /* BrowseViewController.swift in Sources */,
 				38C9522C2AA59FB1002A50BA /* KakaoBook.swift in Sources */,
@@ -362,6 +369,7 @@
 				38B35B3B2A779B7200E28690 /* AppDelegate.swift in Sources */,
 				38B35B3D2A779B7200E28690 /* SceneDelegate.swift in Sources */,
 				38FBCF482A84A0F300045027 /* APIKey.swift in Sources */,
+				38DBD9B62AA7194700111A5C /* UIViewController+Extension.swift in Sources */,
 				38C952432AA5B7AA002A50BA /* BookListCollectionViewCell.swift in Sources */,
 				A197F10C2A7A93A200B69D1C /* PopContentsTableViewCell.swift in Sources */,
 			);

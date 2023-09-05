@@ -21,6 +21,7 @@ final class SearchViewController: UIViewController {
     }
     
     var bookList = [KakaoBook]()
+    private let realm = try! Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,12 +131,39 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         
         let row = bookList[indexPath.row]
         
-        let realm = try! Realm()
-        let task = KakaoBookRealm(title: row.title, authors: row.authors, publisher: row.publisher, price: row.price, thumbnail: row.thumbnail, url: row.url)
+        let task = KakaoBookRealm(
+            title: row.title,
+            authors: row.authors,
+            publisher: row.publisher,
+            price: row.price,
+            summary: row.summary,
+            thumbnail: row.thumbnail,
+            url: row.url
+        )
         
-        try! realm.write {
-            realm.add(task)
-//            print("Realm Add Success")
+        do {
+            try realm.write {
+                realm.add(task)
+            }
+        } catch {
+            print("ERROR")
+        }
+        
+        DispatchQueue.global().async {
+            
+            guard let url = URL(string: row.thumbnail) else { return }
+            
+            do {
+                let data = try Data(contentsOf: url)
+                
+                DispatchQueue.main.async {
+                    if let bookImage = UIImage(data: data) {
+                        self.saveImageToDocument(fileName: "andy_\(task._id).jpg", image: bookImage)
+                    }
+                }
+            } catch {
+                print("ERROR")
+            }
         }
         
         dismiss(animated: true)

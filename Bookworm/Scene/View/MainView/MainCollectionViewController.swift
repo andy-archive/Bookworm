@@ -25,6 +25,7 @@ final class MainCollectionViewController: UICollectionViewController {
         }
     }
     
+    private let realm = try! Realm()
     private var tasks: Results<KakaoBookRealm>!
     
     override func viewDidLoad() {
@@ -32,9 +33,9 @@ final class MainCollectionViewController: UICollectionViewController {
         
         setBookRealm()
         configureCollectionViewCell()
-        collectionView.collectionViewLayout = .setCollectionViewLayout(numberOfItem: 2, sectionSpacing: 4, itemSpacing: 8)
         
-        //searchList = bookInfo.list
+        guard let fileURL = realm.configuration.fileURL else { return }
+        print(fileURL)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,26 +76,15 @@ final class MainCollectionViewController: UICollectionViewController {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BookListCollectionViewCell.reuseIdentifier, for: indexPath) as? BookListCollectionViewCell else { return UICollectionViewCell() }
         
         let row = tasks[indexPath.row]
+        
         guard let thumbnail = row.thumbnail else { return UICollectionViewCell() }
         guard let url = URL(string: thumbnail) else { return UICollectionViewCell() }
         
         cell.titleLabel.text = row.title
         cell.bookImage.loadImage(url: url)
         
-        //let row = searchList[indexPath.row]
-        //cell.configureCell(row: row)
-        //cell.likeButton.tag = indexPath.row
-        //cell.likeButton.addTarget(self, action: #selector(likeButtonClicked), for: .touchUpInside)
-        
         return cell
     }
-    
-//    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        guard let vc = storyboard?.instantiateViewController(withIdentifier: DetailViewController.reuseIdentifier) as? DetailViewController else { return }
-//        vc.bookIndex = searchList[indexPath.row]
-//        navigationController?.pushViewController(vc, animated: true)
-//    }
-    
 }
 
 // MARK: UISearchBar
@@ -135,9 +125,11 @@ extension MainCollectionViewController: UISearchBarDelegate {
 extension MainCollectionViewController {
     
     private func configureCollectionViewCell() {
+        
         collectionView.register(BookListCollectionViewCell.self, forCellWithReuseIdentifier: BookListCollectionViewCell.reuseIdentifier)
-        //let nib = UINib(nibName: MainCollectionViewCell.reuseIdentifier, bundle: nil)
-        //collectionView.register(nib, forCellWithReuseIdentifier: MainCollectionViewCell.reuseIdentifier)
+                
+        collectionView.collectionViewLayout = .setCollectionViewLayout(numberOfItem: 2, sectionSpacing: 4, itemSpacing: 8)
+
     }
 }
 
@@ -145,7 +137,6 @@ extension MainCollectionViewController {
 
 extension MainCollectionViewController {
     private func setBookRealm() {
-        let realm = try! Realm()
         tasks = realm.objects(KakaoBookRealm.self)
     }
 }
