@@ -89,7 +89,9 @@ final class DetailContentsViewController: BaseViewController {
     private func backButtonClicked() {
         guard let textView = memoTextView.text else { return }
         
-        if textView != data?.userMemoText {
+        if textView == data?.userMemoText || memoTextView.textColor == UIColor.placeholderText {
+            navigationController?.popViewController(animated: true)
+        } else {
             let alert = UIAlertController(title: "정말로 뒤로 가시겠습니까?", message: "내용이 저장되지 않습니다.", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "아니오", style: .cancel)
             let button = UIAlertAction(title: "글쓰기 취소", style: .destructive) { [weak self] _ in
@@ -99,8 +101,6 @@ final class DetailContentsViewController: BaseViewController {
             alert.addAction(button)
             present(alert, animated: true)
             return
-        } else {
-            navigationController?.popViewController(animated: false)
         }
     }
     
@@ -118,7 +118,7 @@ final class DetailContentsViewController: BaseViewController {
                     self?.removeImageFromDocument(fileName: "andy_\(data._id).jpg")
                     realm.delete(data)
                 }
-                self?.navigationController?.popViewController(animated: false)
+                self?.navigationController?.popViewController(animated: true)
             } catch {
                 print(error)
             }
@@ -130,11 +130,11 @@ final class DetailContentsViewController: BaseViewController {
     }
     
     @objc
-    func updateButtonClicked() {
+    private func updateButtonClicked() {
         guard let data = data else { return }
         guard let textView = memoTextView.text else { return }
         
-        if textView.isEmpty {
+        if memoTextView.text.isEmpty || memoTextView.textColor == UIColor.placeholderText {
             let alert = UIAlertController(title: "내용이 부족합니다.", message: "1자 이상 입력하세요", preferredStyle: .alert)
             let button = UIAlertAction(title: "확인", style: .default)
             alert.addAction(button)
@@ -213,12 +213,4 @@ extension DetailContentsViewController: UITextViewDelegate {
         textView.textColor = .label
         textView.text = nil
     }
-
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if textView.text.isEmpty {
-            textView.text = "입력하세요"
-            textView.textColor = .placeholderText
-        }
-    }
-
 }
