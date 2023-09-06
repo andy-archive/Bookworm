@@ -28,7 +28,6 @@ final class BookListViewController: BaseViewController {
     }
     
     override func setConstraints() {
-        
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             collectionView.topAnchor.constraint(equalTo: view.topAnchor),
@@ -54,7 +53,7 @@ final class BookListViewController: BaseViewController {
     }
     
     @objc
-    func searchButtonClicked() {
+    private func searchButtonClicked() {
         let sb = UIStoryboard(name: "Main", bundle: nil)
         guard let vc = sb.instantiateViewController(withIdentifier: SearchViewController.reuseIdentifier) as? SearchViewController else { return }
         let nav = UINavigationController(rootViewController: vc)
@@ -98,10 +97,9 @@ extension BookListViewController: UICollectionViewDelegate, UICollectionViewData
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        tabBarController?.tabBar.isHidden.toggle()
-        navigationController?.isToolbarHidden.toggle()
         let vc = DetailContentsViewController()
         vc.data = tasks[indexPath.row]
+        vc.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(vc, animated: true)
     }
 }
