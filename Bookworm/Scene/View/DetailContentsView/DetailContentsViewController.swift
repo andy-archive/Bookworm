@@ -21,7 +21,7 @@ final class DetailContentsViewController: BaseViewController {
     }()
     
     private let toolBar = {
-        let view = UIToolbar()
+        let view = UIToolbar(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 35))
         return view
     }()
     
@@ -93,7 +93,6 @@ final class DetailContentsViewController: BaseViewController {
             let alert = UIAlertController(title: "정말로 뒤로 가시겠습니까?", message: "내용이 저장되지 않습니다.", preferredStyle: .alert)
             let cancel = UIAlertAction(title: "아니오", style: .cancel)
             let button = UIAlertAction(title: "글쓰기 취소", style: .destructive) { [weak self] _ in
-//                self?.navigationController?.isToolbarHidden.toggle()
                 self?.navigationController?.popViewController(animated: true)
             }
             alert.addAction(cancel)
